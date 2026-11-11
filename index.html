@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101611">
+  <title>ABU: Sang Penguasa Rimba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Abu game"><span class="brand-mark">A</span><span>ABU<span class="brand-sub"> / SANG PENGUASA RIMBA</span></span></a>
+      <div class="chapter"><span class="live-dot"></span><span id="chapter-label">BAB I · ANAK YANG DIBUANG</span></div>
+      <button class="icon-button" id="sound-button" title="Suara">♫</button>
+    </header>
+    <section class="game-layout">
+      <div class="world-column">
+        <div class="world-frame">
+          <div class="world-topline"><span><i class="pin"></i> <b id="location-label">PINGGIRAN RIMBA</b></span><span id="clock-label">HARI 1 · FAJAR</span></div>
+          <canvas id="game" width="800" height="500" aria-label="Dunia game pixel art"></canvas>
+          <div class="scene-tag"><span class="scene-icon">✦</span><span><b id="scene-title">Tanah Buangan</b><small id="scene-subtitle">Tak ada yang menunggumu di sini.</small></span></div>
+          <div class="toast" id="toast"></div>
+          <div class="intro" id="intro-screen">
+            <div class="intro-card">
+              <div class="eyebrow">SEBUAH KISAH TENTANG BERTAHAN HIDUP</div>
+              <h1>MEREKA<br><em>MEMBUANGMU.</em></h1>
+              <p>Di tanah yang melupakan namamu, setiap luka adalah pelajaran. Bangun kekuatanmu. Taklukkan rimba. Buat mereka mengingat.</p>
+              <button class="primary-button" id="start-button">MULAI PERJALANAN <span>→</span></button>
+              <div class="intro-note">WASD / ↑↓←→ bergerak <span>·</span> SPACE menyerang <span>·</span> E berinteraksi</div>
+            </div>
+          </div>
+        </div>
+        <div class="controls-row"><span><kbd>WASD</kbd> GERAK</span><span><kbd>SPACE</kbd> SERANG</span><span><kbd>E</kbd> INTERAKSI</span><span><kbd>Q</kbd> MAKAN</span><span><kbd>I</kbd> TAS</span><button id="mobile-action" aria-label="Aksi">AKSI ↗</button></div>
+        <div class="mobile-pad"><button data-dir="up">↑</button><div><button data-dir="left">←</button><button data-dir="down">↓</button><button data-dir="right">→</button></div></div>
+      </div>
+      <aside class="sidebar">
+        <section class="profile-card">
+          <div class="portrait"><span class="portrait-sun"></span><span class="portrait-person">♟</span><span class="level-badge" id="level">01</span></div>
+          <div class="profile-info"><div class="profile-name">ABU <span class="status-pill">PEMULA</span></div><div class="profile-title" id="player-title">Anak Buangan</div><div class="xp-track"><span id="xp-fill"></span></div><small><span id="xp-text">0</span> / 100 XP</small></div>
+        </section>
+        <section class="stat-block"><div class="stat-line"><span>❤ <b>NYAWA</b></span><span id="health-value">100 / 100</span></div><div class="meter health"><span id="health-fill"></span></div><div class="stat-line"><span>◉ <b>STAMINA</b></span><span id="stamina-value">100 / 100</span></div><div class="meter stamina"><span id="stamina-fill"></span></div><div class="stat-line hunger-line"><span>◒ <b>KENYANG</b></span><span id="hunger-value">82 / 100</span></div><div class="meter hunger"><span id="hunger-fill"></span></div></section>
+        <section class="quest-card"><div class="section-heading"><span>MISI AKTIF</span><span class="quest-count" id="quest-count">01</span></div><div id="quest-content"><div class="quest-title">Jejak di Tanah Basah</div><p>Temukan jalan menuju kampung. Bertahan hidup adalah kemenangan pertamamu.</p><div class="quest-objective"><span class="objective-dot"></span><span id="quest-objective">Cari seseorang di dekat api unggun</span></div></div></section>
+        <section class="rival-card"><div class="rival-header"><span>ANCAMAN TERBESAR</span><span class="threat-icon">▲</span></div><div class="rival-name">RAKA <span>SI SERIGALA</span></div><p>Juara arena yang merenggut segalanya darimu. Dia belum tahu kau masih hidup.</p><div class="threat-track"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>TINGKAT ANCAMAN <b>EKSTREM</b></small></section>
+        <section class="inventory-card"><div class="section-heading"><span>TAS PERJALANAN</span><button id="inventory-toggle">SEMUA ↗</button></div><div class="inventory-grid" id="inventory-grid"></div><div class="coin-line"><span>◈</span><b id="coin-count">12</b><small>KOIN TEMBAGA</small></div></section>
+        <div class="sidebar-footer"><span id="relationship">♡ MASIH SENDIRI</span><span>SIMPAN OTOMATIS</span></div>
+      </aside>
+    </section>
+    <footer class="bottom-bar"><span>© 2026 RIMBA INTERAKTIF</span><span class="footer-center">YANG LEMAH PUNYA ALASAN UNTUK BERTAHAN.</span><button id="help-button">CARA BERMAIN <span>↗</span></button></footer>
+  </main>
+  <div class="dialog-backdrop" id="dialog-backdrop"><div class="dialog-box"><button class="dialog-close" id="dialog-close">×</button><div class="dialog-eyebrow" id="dialog-eyebrow">SESEORANG DI DEKAT API</div><h2 id="dialog-title">Kau masih hidup.</h2><p id="dialog-text"></p><div id="dialog-options"></div></div></div>
+  <div class="toast-pop" id="toast-pop"></div>
+  <script src="game.js"></script>
+</body>
+</html>
